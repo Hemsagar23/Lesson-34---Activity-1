@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bank App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .app {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .balance {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        form {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        input,
+        select,
+        button {
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 6px 0;
+            padding: 6px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .income {
+            background: #dff9fb;
+            color: green;
+        }
+
+        .expense {
+            background: #ffe6e6;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <h1>💰 Bank App</h1>
+        <div class="balance">Balance: ₹<span id="balance">0</span></div>
+
+        <form id="form">
+            <input type="text" id="desc" placeholder="Description" required>
+            <input type="number" id="amount" placeholder="Amount" required>
+            <select id="type">
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
+            <button type="submit">Add</button>
+        </form>
+
+        <ul id="list"></ul>
+    </div>
+
+    <script>
+        let balance = 0;
+        const form = document.getElementById("form");
+        const list = document.getElementById("list");
+        const balanceEl = document.getElementById("balance");
+
+        form.onsubmit = e => {
+            e.preventDefault();
+            let desc = document.getElementById("desc").value;
+            let amount = parseInt(document.getElementById("amount").value);
+            let type = document.getElementById("type").value;
+
+            let li = document.createElement("li");
+            li.className = type;
+            li.innerHTML = `${desc} <span>${type === "income" ? "+" : "-"}₹${amount}</span>`;
+            list.appendChild(li);
+
+            balance += (type === "income" ? amount : -amount);
+            balanceEl.textContent = balance;
+
+            form.reset();
+        };
+    </script>
+</body>
+
+</html>
