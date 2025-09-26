@@ -5,16 +5,29 @@
     <meta charset="UTF-8">
     <title>Bank App</title>
     <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
     <div class="app">
-        <h1>💰 Bank App</h1>
-        <div class="balance">Balance: ₹<span id="balance">0</span></div>
+        <header>
+            <h1><i class="fa-solid fa-piggy-bank"></i> Bank App</h1>
+        </header>
+
+        <div class="balance-card">
+            <h2>Total Balance</h2>
+            <p>₹<span id="balance">0</span></p>
+        </div>
 
         <div class="totals">
-            <div>Income: ₹<span id="income">0</span></div>
-            <div>Expense: ₹<span id="expense">0</span></div>
+            <div class="card income-card">
+                <h3><i class="fa-solid fa-circle-arrow-up"></i> Income</h3>
+                <p>₹<span id="income">0</span></p>
+            </div>
+            <div class="card expense-card">
+                <h3><i class="fa-solid fa-circle-arrow-down"></i> Expense</h3>
+                <p>₹<span id="expense">0</span></p>
+            </div>
         </div>
 
         <form id="form">
@@ -24,10 +37,14 @@
                 <option value="income">Income</option>
                 <option value="expense">Expense</option>
             </select>
-            <button type="submit">Add</button>
+            <button type="submit"><i class="fa-solid fa-plus"></i> Add</button>
         </form>
 
         <ul id="list"></ul>
+
+        <footer>
+            <p>📊 Simple Bank App — Built with ❤️</p>
+        </footer>
     </div>
 
     <script src="project.js"></script>

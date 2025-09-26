@@ -13,10 +13,13 @@ function updateUI() {
     transactions.forEach((t, index) => {
         let li = document.createElement("li");
         li.className = t.type;
-        li.innerHTML = `${t.desc} <span>${t.type === "income" ? "+" : "-"}₹${t.amount}</span>`;
+        li.innerHTML = `
+      <span><i class="fa-solid ${t.type === "income" ? "fa-circle-arrow-up" : "fa-circle-arrow-down"}"></i> ${t.desc}</span>
+      <span>${t.type === "income" ? "+" : "-"}₹${t.amount}</span>
+    `;
 
         let delBtn = document.createElement("button");
-        delBtn.textContent = "✖";
+        delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
         delBtn.className = "delete-btn";
         delBtn.onclick = () => {
             transactions.splice(index, 1);
